@@ -1,0 +1,15 @@
+{
+  "cart": {
+    "items": [
+      {
+        "title": "Test",
+        "quantity": 3,
+        "total": 18,
+        "price": 6,
+        "id": 1
+      }
+    ],
+    "totalAmount": 18,
+    "totalQuantity": 3
+  }
+}
