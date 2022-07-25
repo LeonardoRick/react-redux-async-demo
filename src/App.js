@@ -4,66 +4,32 @@ import Cart from './components/Cart/Cart';
 import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
 import Notification from './components/UI/Notifications';
+import { fetchCartData, sendCartData } from './store/cart';
 import { notificationActions } from './store/notification';
 
 let isInitial = true;
-
+let success = false;
 function App() {
   const showCart = useSelector((state) => state.toggleCart.show);
   const cart = useSelector((state) => state.cart);
   const notification = useSelector((state) => state.notification);
   const dispatch = useDispatch();
 
+  if (notification) {
+    setTimeout(() => {
+      dispatch(notificationActions.hideNotification());
+    }, 1000);
+  }
+
   useEffect(() => {
-    const sendCartData = async () => {
-      dispatch(
-        notificationActions.showNotification({
-          title: 'Sending...',
-          message: 'The list is being updated, wait.',
-          status: 'pending',
-        })
-      );
-
-      const response = await fetch('/cart', {
-        method: 'PUT',
-        body: JSON.stringify(cart),
-        headers: {
-          'Content-type': 'application/json',
-        },
-      });
-
-      const data = await response.json();
-      if (!data) {
-        dispatch(
-          notificationActions.showNotification({
-            title: 'Error!',
-            message: 'Save cart failed!',
-            status: 'error',
-          })
-        );
-      }
-
-      dispatch(
-        notificationActions.showNotification({
-          title: 'Success!',
-          message: 'List updated successfully',
-          status: 'success',
-        })
-      );
-    };
     if (isInitial) {
+      success = dispatch(fetchCartData());
       isInitial = false;
       return;
     }
-    sendCartData().catch((err) => {
-      dispatch(
-        notificationActions.showNotification({
-          title: 'Error!',
-          message: 'Save cart failed!',
-          status: 'error',
-        })
-      );
-    });
+    if (success && cart.isUpdate) {
+      dispatch(sendCartData(cart));
+    }
   }, [cart, dispatch]);
   return (
     <>

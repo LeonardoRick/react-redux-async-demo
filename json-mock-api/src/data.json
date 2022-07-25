@@ -2,14 +2,24 @@
   "cart": {
     "items": [
       {
+        "id": 2,
+        "title": "BATATA",
+        "price": 8,
+        "description": "Batata is the best item to add to your meal",
+        "quantity": 1,
+        "total": 8
+      },
+      {
+        "id": 1,
         "title": "Test",
-        "quantity": 3,
-        "total": 18,
         "price": 6,
-        "id": 1
+        "description": "This is a first product - amazing!",
+        "quantity": 4,
+        "total": 24
       }
     ],
-    "totalAmount": 18,
-    "totalQuantity": 3
+    "totalAmount": 32,
+    "totalQuantity": 5,
+    "isUpdate": true
   }
 }
