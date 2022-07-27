@@ -21,5 +21,19 @@
     "totalAmount": 32,
     "totalQuantity": 5,
     "isUpdate": true
-  }
+  },
+  "products": [
+    {
+      "id": 1,
+      "title": "Test",
+      "price": 6,
+      "description": "This is a first product - amazing!"
+    },
+    {
+      "id": 2,
+      "title": "BATATA",
+      "price": 8,
+      "description": "Batata is the best item to add to your meal"
+    }
+  ]
 }

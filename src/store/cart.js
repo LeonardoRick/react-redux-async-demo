@@ -7,7 +7,7 @@ const cartItemsSlice = createSlice({
     items: [],
     totalAmount: 0,
     totalQuantity: 0,
-    isUpdate: false,
+    isUpdate: false, // controls if its a update or the inicialization of the cart
   },
   reducers: {
     addItem(state, item) {
